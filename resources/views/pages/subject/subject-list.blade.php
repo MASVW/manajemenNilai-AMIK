@@ -17,7 +17,10 @@
                         {{ __('Subject List') }}
                     </div>
                     <div class="">
-                        <a href="{{ route('subject.create.view') }}">
+                        {{-- TODO MAHASISWA:
+                            Ganti href "#" dengan route subject.create.view.
+                        --}}
+                        <a href="#">
                             <x-primary-button>
                                 Create New Data
                             </x-primary-button>
@@ -36,35 +39,12 @@
                         {{-- HINT BELAJAR:
                             $loop->odd adalah helper Blade untuk mengecek nomor loop ganjil.
                         --}}
-                        @foreach ($subjects as $key => $subject)
-                            <tr class="capitalize {{ $key % 2 == 0 ? 'bg-gray-500' : '' }}">
-                                <td class="py-4 text-center">{{ $subject?->name ?? 'Belum ada nama' }}</td>
-                                <td class="py-4 flex justify-center items-center h-full">
-                                    <div class="flex space-x-3">
-                                        <div>
-                                            <a href="{{ route('subject.view', ['id' => $subject->id]) }}">
-                                                <button type="button"
-                                                    class="bg-yellow-400 text-black uppercase text-xs px-4 py-2 rounded-md">VIEW</button>
-                                            </a>
-                                        </div>
-                                        <div>
-                                            <a href="{{ route('subject.patch.view', ['id' => $subject->id]) }}">
-                                                <button type="button"
-                                                    class="bg-cyan-700 text-white uppercase text-xs px-4 py-2 rounded-md">EDIT</button>
-                                            </a>
-                                        </div>
-                                        <div>
-                                            <form method="POST"
-                                                action="{{ route('subject.delete', ['id' => $subject->id]) }}">
-                                                @csrf
-                                                <button type="submit"
-                                                    class="bg-slate-50 text-black uppercase text-xs px-4 py-2 rounded-md">DELETE</button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                        @endforeach
+                        {{-- TODO MAHASISWA:
+                            1. Loop variable $subjects.
+                            2. Tampilkan nama subject.
+                            3. Buat tombol VIEW, EDIT, dan DELETE.
+                            4. Pastikan form DELETE memakai @csrf.
+                        --}}
                     </x-slot>
                 </x-table>
             </div>

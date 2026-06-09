@@ -16,7 +16,10 @@ return new class extends Migration
             // Subject dibuat sederhana agar mahasiswa bisa fokus memahami
             // pola CRUD tanpa terlalu banyak field.
             $table->id();
-            $table->string('name');
+
+            // TODO MAHASISWA:
+            // Tambahkan kolom name untuk nama mata pelajaran.
+
             $table->timestamps();
         });
     }

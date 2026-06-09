@@ -18,15 +18,16 @@
                     </div>
                 </div>
 
-                <form class="space-y-5 px-5" action="{{ route('subject.create.data') }}" method="POST">
+                {{-- TODO MAHASISWA:
+                    Ganti action "#" dengan route subject.create.data.
+                --}}
+                <form class="space-y-5 px-5" action="#" method="POST">
                     @csrf
                     <div class="w-full grid grid-cols-1 gap-x-5">
-                        <div>
-                            <x-input-label for="name" :value="__('Subject Name')" />
-                            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name"
-                                :value="old('name')" required autofocus autocomplete="name" />
-                            <x-input-error :messages="$errors->get('name')" class="mt-2" />
-                        </div>
+                        {{-- TODO MAHASISWA:
+                            Buat input name untuk nama subject.
+                            Gunakan x-input-label, x-text-input, dan x-input-error.
+                        --}}
                     </div>
                     <div class="grid justify-items-end">
                         <x-primary-button>

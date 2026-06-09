@@ -17,7 +17,10 @@
                         {{ __('Student List') }}
                     </div>
                     <div class="">
-                        <a href="{{ route('student.create.view') }}">
+                        {{-- TODO MAHASISWA:
+                            Ganti href "#" dengan route untuk membuka form create student.
+                        --}}
+                        <a href="#">
                             <x-primary-button>
                                 Create New Data
                             </x-primary-button>
@@ -40,41 +43,13 @@
                             @foreach dipakai untuk menampilkan satu baris tabel
                             untuk setiap student yang ada di database.
                         --}}
-                        @foreach ($students as $key => $student)
-                            <tr class="capitalize {{ $key % 2 == 0 ? 'bg-gray-500' : '' }}">
-                                <td class="py-4">{{ $student?->name ?? 'Belum ada nama' }}</td>
-                                <td class="py-4 text-center">{{ $student?->nis ?? 'Belum ada nama' }}</td>
-                                <td class="py-4 text-center">{{ $student?->gender ?? 'Belum ada nama' }}</td>
-                                <td class="py-4 capitalize text-center">
-                                    {{ $student->birthDate?->format('d M Y') ?? 'Belum ada tanggal lahir' }}
-                                </td>
-                                <td class="py-4 flex justify-center items-center h-full">
-                                    <div class="flex space-x-3">
-
-                                        <div>
-                                            <a href="{{ route('student.view', ['nis' => $student->nis]) }}">
-                                                <button type="button"
-                                                    class="bg-yellow-400 text-black uppercase text-xs px-4 py-2 rounded-md">VIEW</button>
-                                            </a>
-                                        </div>
-                                        <div>
-                                            <a href="{{ route('student.patch.view', ['nis' => $student->nis]) }}">
-                                                <button type="button"
-                                                    class="bg-cyan-700 text-white uppercase text-xs px-4 py-2 rounded-md">EDIT</button>
-                                            </a>
-                                        </div>
-                                        <div>
-                                            <form method="POST"
-                                                action="{{ route('student.delete', ['id' => $student->id]) }}">
-                                                @csrf
-                                                <button type="submit"
-                                                    class="bg-slate-50 text-black uppercase text-xs px-4 py-2 rounded-md">DELETE</button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                        @endforeach
+                        {{-- TODO MAHASISWA:
+                            1. Loop variable $students.
+                            2. Tampilkan name, nis, gender, dan birthDate.
+                            3. Buat tombol VIEW menuju student.view.
+                            4. Buat tombol EDIT menuju student.patch.view.
+                            5. Buat form DELETE menuju student.delete dan jangan lupa @csrf.
+                        --}}
                     </x-slot>
                 </x-table>
             </div>

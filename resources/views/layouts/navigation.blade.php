@@ -22,17 +22,26 @@
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('student.list')" :active="request()->routeIs('student.list')">
+                    {{-- TODO MAHASISWA:
+                        Ganti href "#" dengan route student.list dan atur active route Student.
+                    --}}
+                    <x-nav-link href="#" :active="false">
                         {{ __('Student') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('subject.list')" :active="request()->routeIs('subject.list')">
+                    {{-- TODO MAHASISWA:
+                        Ganti href "#" dengan route subject.list dan atur active route Subject.
+                    --}}
+                    <x-nav-link href="#" :active="false">
                         {{ __('Subject') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('score.list')" :active="request()->routeIs('score.*')">
+                    {{-- TODO MAHASISWA:
+                        Ganti href "#" dengan route score.list dan atur active route Score.
+                    --}}
+                    <x-nav-link href="#" :active="false">
                         {{ __('Input Nilai') }}
                     </x-nav-link>
                 </div>
@@ -98,13 +107,16 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('student.list')" :active="request()->routeIs('student.*')">
+            {{-- TODO MAHASISWA:
+                Lengkapi link responsive untuk Student, Subject, dan Input Nilai.
+            --}}
+            <x-responsive-nav-link href="#" :active="false">
                 {{ __('Student') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('subject.list')" :active="request()->routeIs('subject.*')">
+            <x-responsive-nav-link href="#" :active="false">
                 {{ __('Subject') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('score.list')" :active="request()->routeIs('score.*')">
+            <x-responsive-nav-link href="#" :active="false">
                 {{ __('Input Nilai') }}
             </x-responsive-nav-link>
         </div>

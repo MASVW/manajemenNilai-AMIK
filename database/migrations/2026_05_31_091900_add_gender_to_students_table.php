@@ -15,7 +15,9 @@ return new class extends Migration
             // HINT BELAJAR:
             // Migration juga bisa dipakai untuk mengubah tabel yang sudah ada.
             // Di sini kita menambahkan kolom gender ke tabel students.
-            $table->enum('gender', ['male', 'female']);
+
+            // TODO MAHASISWA:
+            // Tambahkan kolom gender dengan pilihan male dan female.
         });
     }
 

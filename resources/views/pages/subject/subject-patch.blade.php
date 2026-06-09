@@ -18,16 +18,16 @@
                     </div>
                 </div>
 
-                <form class="space-y-5 px-5" action="{{ route('subject.patch.data', ['id' => $subject->id]) }}"
-                    method="POST">
+                {{-- TODO MAHASISWA:
+                    Ganti action "#" dengan route subject.patch.data dan parameter id.
+                --}}
+                <form class="space-y-5 px-5" action="#" method="POST">
                     @csrf
                     <div class="w-full grid grid-cols-1 gap-x-5">
-                        <div>
-                            <x-input-label for="name" :value="__('Subject Name')" />
-                            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name"
-                                :value="old('name', $subject->name)" required autofocus autocomplete="name" />
-                            <x-input-error :messages="$errors->get('name')" class="mt-2" />
-                        </div>
+                        {{-- TODO MAHASISWA:
+                            Buat input edit name.
+                            Gunakan old('name', $subject->name).
+                        --}}
                     </div>
                     <div class="grid justify-items-end">
                         <x-primary-button>

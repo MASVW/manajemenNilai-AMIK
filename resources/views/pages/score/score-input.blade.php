@@ -14,10 +14,16 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="flex place-items-center mx-4">
                     <div class="flex-grow p-6 text-gray-900 dark:text-gray-100">
-                        {{ __('Input Nilai') }}: {{ $student->name }}
+                        {{ __('Input Nilai') }}
+                        {{-- TODO MAHASISWA:
+                            Tampilkan nama student di sini setelah data $student dikirim dari controller.
+                        --}}
                     </div>
                     <div>
-                        <a href="{{ route('score.list') }}">
+                        {{-- TODO MAHASISWA:
+                            Ganti href "#" dengan route score.list.
+                        --}}
+                        <a href="#">
                             <x-secondary-button>
                                 Back
                             </x-secondary-button>
@@ -40,30 +46,17 @@
                         </tr>
                     </x-slot>
                     <x-slot name="tableBody">
-                        @foreach ($subjects as $subject)
-                            <tr class="capitalize {{ $loop->odd ? 'bg-gray-500' : '' }}">
-                                <td class="py-4">{{ $subject->name }}</td>
-                                <td class="py-4 text-center">
-                                    {{-- HINT BELAJAR:
-                                        Form dibuat per subject supaya tombol UPDATE hanya mengubah
-                                        satu nilai, bukan semua nilai sekaligus.
-                                    --}}
-                                    <form id="score-form-{{ $subject->id }}" method="POST"
-                                        action="{{ route('score.update.data', ['studentId' => $student->id, 'subjectId' => $subject->id]) }}">
-                                        @csrf
-                                        <input type="hidden" name="subject_id" value="{{ $subject->id }}">
-                                        <input class="w-24 rounded-md text-black" type="number" name="score"
-                                            min="0" max="100"
-                                            value="{{ old('subject_id') == $subject->id ? old('score') : ($scores[$subject->id] ?? 0) }}"
-                                            required>
-                                    </form>
-                                </td>
-                                <td class="py-4 text-center">
-                                    <button form="score-form-{{ $subject->id }}" type="submit"
-                                        class="bg-cyan-700 text-white uppercase text-xs px-4 py-2 rounded-md">UPDATE</button>
-                                </td>
-                            </tr>
-                        @endforeach
+                        {{-- HINT BELAJAR:
+                            Form dibuat per subject supaya tombol UPDATE hanya mengubah
+                            satu nilai, bukan semua nilai sekaligus.
+                        --}}
+                        {{-- TODO MAHASISWA:
+                            1. Loop variable $subjects.
+                            2. Tampilkan nama subject.
+                            3. Buat form POST per subject menuju score.update.data.
+                            4. Isi input number score dengan nilai lama jika sudah ada, atau 0 jika belum ada.
+                            5. Buat tombol UPDATE yang submit form pada baris tersebut.
+                        --}}
                     </x-slot>
                 </x-table>
             </div>

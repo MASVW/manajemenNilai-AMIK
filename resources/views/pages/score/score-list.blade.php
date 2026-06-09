@@ -28,25 +28,16 @@
                         </tr>
                     </x-slot>
                     <x-slot name="tableBody">
-                        @foreach ($students as $student)
-                            <tr class="capitalize {{ $loop->odd ? 'bg-gray-500' : '' }}">
-                                <td class="py-4 text-center">{{ $loop->iteration }}</td>
-                                <td class="py-4">{{ $student->name }}</td>
-                                <td class="py-4 text-center">
-                                    {{-- HINT BELAJAR:
-                                        unique('subject_id')->count() mencegah subject yang sama
-                                        dihitung dua kali jika ada data score duplikat.
-                                    --}}
-                                    {{ $student->scores->unique('subject_id')->count() }}/{{ $totalSubjects }}
-                                </td>
-                                <td class="py-4 flex justify-center items-center h-full">
-                                    <a href="{{ route('score.input.view', ['studentId' => $student->id]) }}">
-                                        <button type="button"
-                                            class="bg-cyan-700 text-white uppercase text-xs px-4 py-2 rounded-md">INPUT NILAI</button>
-                                    </a>
-                                </td>
-                            </tr>
-                        @endforeach
+                        {{-- HINT BELAJAR:
+                            unique('subject_id')->count() mencegah subject yang sama
+                            dihitung dua kali jika ada data score duplikat.
+                        --}}
+                        {{-- TODO MAHASISWA:
+                            1. Loop variable $students.
+                            2. Tampilkan nomor, nama student, dan keterangan nilai.
+                            3. Format keterangan: jumlah score terisi / total subject.
+                            4. Buat tombol INPUT NILAI menuju score.input.view.
+                        --}}
                     </x-slot>
                 </x-table>
             </div>

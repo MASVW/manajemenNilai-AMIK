@@ -16,11 +16,14 @@ return new class extends Migration
             // Tabel scores menghubungkan students dan subjects.
             // student_id menunjuk ke students.id, subject_id menunjuk ke subjects.id.
             $table->id();
-            $table->string('score')->nullable(true);
-            $table->unsignedBigInteger('student_id');
-            $table->unsignedBigInteger('subject_id');
-            $table->foreign('student_id')->references('id')->on('students');
-            $table->foreign('subject_id')->references('id')->on('subjects');
+
+            // TODO MAHASISWA:
+            // Tambahkan kolom:
+            // - score: nilai, boleh kosong.
+            // - student_id: id student.
+            // - subject_id: id subject.
+            // Lalu tambahkan foreign key ke tabel students dan subjects.
+
             $table->timestamps();
         });
     }

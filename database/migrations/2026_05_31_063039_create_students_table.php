@@ -16,9 +16,13 @@ return new class extends Migration
             // Migration adalah rancangan tabel. Kolom yang ditulis di sini
             // akan dibuat di database saat menjalankan php artisan migrate.
             $table->id();
-            $table->string('name')->nullable(false);
-            $table->string('nis')->nullable(false)->unique('nis');
-            $table->string('birthDate')->nullable(true);
+
+            // TODO MAHASISWA:
+            // Tambahkan kolom:
+            // - name: string, wajib diisi.
+            // - nis: string, wajib diisi, unique.
+            // - birthDate: tanggal/string tanggal, boleh kosong.
+
             $table->timestamps();
         });
     }

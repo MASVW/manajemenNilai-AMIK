@@ -17,14 +17,20 @@
                         {{ __('Subject Detail') }}
                     </div>
                     <div class="grid justify-items-end">
-                        <a href="{{ route('subject.patch.view', ['id' => $subject->id]) }}">
+                        {{-- TODO MAHASISWA:
+                            Ganti href "#" dengan route subject.patch.view dan parameter id.
+                        --}}
+                        <a href="#">
                             <x-primary-button>
                                 Update data
                             </x-primary-button>
                         </a>
                     </div>
                     <div class="grid justify-items-end">
-                        <form action="{{ route('subject.delete', ['id' => $subject->id]) }}" method="POST">
+                        {{-- TODO MAHASISWA:
+                            Ganti action "#" dengan route subject.delete dan parameter id.
+                        --}}
+                        <form action="#" method="POST">
                             @csrf
                             <x-primary-button>
                                 Delete Data
@@ -35,12 +41,9 @@
 
                 <form class="space-y-5 px-5">
                     <div class="w-full grid grid-cols-1 gap-x-5">
-                        <div>
-                            <x-input-label for="name" :value="__('Subject Name')" />
-                            <x-text-input disabled id="name" class="block mt-1 w-full" type="text"
-                                name="name" :value="$subject->name" required autofocus autocomplete="name" />
-                            <x-input-error :messages="$errors->get('name')" class="mt-2" />
-                        </div>
+                        {{-- TODO MAHASISWA:
+                            Tampilkan name subject dalam input disabled.
+                        --}}
                     </div>
                 </form>
             </div>

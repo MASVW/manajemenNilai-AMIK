@@ -18,42 +18,17 @@
                     </div>
                 </div>
 
-                <form class="space-y-5 px-5" action="{{ route('student.patch.data', ['nis' => $student->nis]) }}"
-                    method="POST">
+                {{-- TODO MAHASISWA:
+                    Ganti action "#" dengan route student.patch.data dan kirim parameter nis.
+                --}}
+                <form class="space-y-5 px-5" action="#" method="POST">
                     @csrf
                     <div class="w-full grid grid-cols-3 gap-x-5">
-                        <!-- Name -->
-                        <div>
-                            <x-input-label for="name" :value="__('Name')" />
-                            {{-- HINT BELAJAR:
-                                old('name', $student->name) berarti:
-                                pakai input lama jika validasi gagal, kalau tidak ada pakai data database.
-                            --}}
-                            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name"
-                                :value="old('name') ? old('name') : $student->name" required autofocus autocomplete="name" />
-                            <x-input-error :messages="$errors->get('name')" class="mt-2" />
-                        </div>
-                        <!-- Gender -->
-                        <div class="w-full">
-                            <x-input-label for="gender" :value="__('Gender')" />
-                            <select class="w-full rounded-md" name="gender" id="gender">
-                                <option disabled value="none">Pilih gender</option>
-                                <option value="male"
-                                    {{ old('gender', $student->gender) === 'male' ? 'selected' : null }}>Male</option>
-                                <option value="female"
-                                    {{ old('gender', $student->gender) === 'female' ? 'selected' : null }}>Female
-                                </option>
-                            </select>
-                            <x-input-error :messages="$errors->get('gender')" class="mt-2" />
-                        </div>
-                        <!-- Birth Date -->
-                        <div class="w-full">
-                            <x-input-label for="birthDate" :value="__('Birth Date')" />
-                            <input class="w-full rounded-md" type="date" name="birthDate"
-                                value="{{ old('birthDate', $student->birthDate?->format('Y-m-d')) }}"
-                                autofocus required>
-                            <x-input-error :messages="$errors->get('birthDate')" class="mt-2" />
-                        </div>
+                        {{-- TODO MAHASISWA:
+                            Buat input edit untuk name, gender, dan birthDate.
+                            Gunakan data lama dari variable $student.
+                            Gunakan old('field', data_lama) agar input tidak hilang saat validasi gagal.
+                        --}}
                     </div>
                     <div class="grid justify-items-end">
                         <x-primary-button>

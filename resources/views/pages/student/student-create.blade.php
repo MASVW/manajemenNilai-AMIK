@@ -18,38 +18,23 @@
                     </div>
                 </div>
 
-                <form class="space-y-5 px-5" action="{{ route('student.create.data') }}" method="POST">
+                {{-- TODO MAHASISWA:
+                    Ganti action "#" dengan route student.create.data.
+                --}}
+                <form class="space-y-5 px-5" action="#" method="POST">
                     {{-- HINT BELAJAR:
                         @csrf wajib untuk form POST di Laravel.
                         Tanpa ini, request biasanya ditolak dengan status 419.
                     --}}
                     @csrf
                     <div class="w-full grid grid-cols-3 gap-x-5">
-                        <!-- Name -->
-                        <div>
-                            <x-input-label for="name" :value="__('Name')" />
-                            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name"
-                                :value="old('name')" required autofocus autocomplete="name" />
-                            <x-input-error :messages="$errors->get('name')" class="mt-2" />
-                        </div>
-                        <!-- Gender -->
-                        <div class="w-full">
-                            <x-input-label for="gender" :value="__('Gender')" />
-                            <select class="w-full rounded-md" name="gender" id="gender" value="none">
-                                <option disabled selected value="none">Pilih gender</option>
-                                <option value="male" {{ old('gender') === 'male' ? 'selected' : null }}>Male</option>
-                                <option value="female" {{ old('gender') === 'female' ? 'selected' : null }}>Female
-                                </option>
-                            </select>
-                            <x-input-error :messages="$errors->get('gender')" class="mt-2" />
-                        </div>
-                        <!-- Birth Date -->
-                        <div class="w-full">
-                            <x-input-label for="birthDate" :value="__('Birth Date')" />
-                            <input class="w-full rounded-md" type="date" name="birthDate"
-                                value="{{ old('birthDate') }}" autofocus required>
-                            <x-input-error :messages="$errors->get('birthDate')" class="mt-2" />
-                        </div>
+                        {{-- TODO MAHASISWA:
+                            Buat input untuk:
+                            - name menggunakan x-text-input.
+                            - gender menggunakan select male/female.
+                            - birthDate menggunakan input type date.
+                            Jangan lupa tampilkan x-input-error untuk setiap field.
+                        --}}
                     </div>
                     <div class="grid justify-items-end">
                         <x-primary-button>
