@@ -48,7 +48,7 @@ User buka /student
 Repository ini punya dua konsep branch:
 
 - `master`: output final project yang bersih.
-- `learning`: branch belajar. Di branch ini ada dokumentasi dan komentar `HINT BELAJAR` di beberapa file.
+- `learning`: branch belajar. Di branch ini ada dokumentasi, komentar `HINT BELAJAR`, dan beberapa bagian controller sengaja dikosongkan sebagai tugas mahasiswa.
 
 Perintah dasar:
 
@@ -62,6 +62,36 @@ Kalau mahasiswa ingin belajar dengan membaca hint, gunakan:
 
 ```bash
 git switch learning
+```
+
+Di branch `learning`, beberapa method controller berisi:
+
+```php
+abort(501, 'TODO: lengkapi ...');
+```
+
+Artinya bagian itu belum selesai secara sengaja. Mahasiswa harus mengganti `abort(501, ...)` dengan kode Laravel yang benar sesuai hint.
+
+Contoh bagian yang sengaja dihapus:
+
+```php
+// TODO MAHASISWA:
+// 1. Buat variable $students.
+// 2. Isi dengan semua data student dari database, urutkan dari terbaru.
+// 3. Return view pages.student.student-list.
+// 4. Kirim data dengan key 'students'.
+
+abort(501, 'TODO: lengkapi StudentController@index');
+```
+
+Mahasiswa diharapkan menuliskan sendiri kode seperti:
+
+```php
+$students = Student::query()->latest()->get();
+
+return view('pages.student.student-list', [
+    'students' => $students,
+]);
 ```
 
 Kalau ingin melihat output final tanpa komentar belajar tambahan, gunakan:
@@ -563,6 +593,22 @@ npm install
 
 Bagian ini adalah urutan pengerjaan yang bisa diikuti mahasiswa.
 
+Jika memakai branch `learning`, kerjakan TODO controller secara bertahap. Jangan langsung isi semuanya. Mulai dari Student dulu, lalu Subject, lalu Score.
+
+Urutan latihan yang disarankan:
+
+1. Lengkapi `StudentController@index`.
+2. Lengkapi `StudentController@createView`.
+3. Lengkapi `StudentController@createData`.
+4. Lengkapi `StudentController@detailView`.
+5. Lengkapi `StudentController@patchView`.
+6. Lengkapi `StudentController@patchData`.
+7. Lengkapi `StudentController@deleteData`.
+8. Ulangi pola yang sama di `SubjectController`.
+9. Setelah CRUD paham, lengkapi `ScoreController`.
+
+Catatan: selama TODO belum diisi, beberapa halaman akan menampilkan error `501`. Itu normal untuk branch latihan.
+
 ### Step 1. Buat project Laravel
 
 Jika mulai dari nol:
@@ -864,6 +910,8 @@ Jalankan:
 ```bash
 php artisan test
 ```
+
+Di branch `learning`, test bisa gagal selama TODO belum selesai. Gunakan test sebagai target akhir: setelah mahasiswa mengisi semua TODO, test seharusnya kembali hijau.
 
 Jalankan compile Blade:
 

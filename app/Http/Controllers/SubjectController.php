@@ -14,57 +14,77 @@ class SubjectController extends Controller
     {
         // HINT BELAJAR:
         // Ambil semua subject, lalu tampilkan ke halaman list.
-        $subjects = Subject::query()->latest()->get();
 
-        return view('pages.subject.subject-list', ['subjects' => $subjects]);
+        // TODO MAHASISWA:
+        // 1. Ambil semua subject dari database.
+        // 2. Return view pages.subject.subject-list.
+        // 3. Kirim data dengan key 'subjects'.
+
+        abort(501, 'TODO: lengkapi SubjectController@index');
     }
 
     public function createView()
     {
         // HINT BELAJAR:
         // Tampilkan form tambah subject.
-        return view('pages.subject.subject-create');
+
+        // TODO MAHASISWA:
+        // Return view pages.subject.subject-create.
+
+        abort(501, 'TODO: lengkapi SubjectController@createView');
     }
 
     public function createData(Request $request)
     {
         // HINT BELAJAR:
         // Karena Subject hanya punya name, proses simpannya sangat pendek.
-        $validated = $this->validateSubject($request);
 
-        Subject::query()->create($validated);
+        // TODO MAHASISWA:
+        // 1. Validasi input subject.
+        // 2. Simpan subject baru.
+        // 3. Redirect ke route subject.list.
 
-        return redirect()->route('subject.list')->with('success', 'Subject created successfully.');
+        abort(501, 'TODO: lengkapi SubjectController@createData');
     }
 
     public function detailView($id)
     {
         // HINT BELAJAR:
         // Detail subject dicari berdasarkan id.
-        $subject = Subject::query()->findOrFail($id);
 
-        return view('pages.subject.subject-detail', ['subject' => $subject]);
+        // TODO MAHASISWA:
+        // 1. Cari subject berdasarkan id.
+        // 2. Return view pages.subject.subject-detail.
+        // 3. Kirim data dengan key 'subject'.
+
+        abort(501, 'TODO: lengkapi SubjectController@detailView');
     }
 
     public function patchView($id)
     {
         // HINT BELAJAR:
         // Ambil data lama untuk ditaruh di form edit.
-        $subject = Subject::query()->findOrFail($id);
 
-        return view('pages.subject.subject-patch', ['subject' => $subject]);
+        // TODO MAHASISWA:
+        // 1. Cari subject berdasarkan id.
+        // 2. Return view pages.subject.subject-patch.
+        // 3. Kirim data dengan key 'subject'.
+
+        abort(501, 'TODO: lengkapi SubjectController@patchView');
     }
 
     public function patchData(Request $request, $id)
     {
         // HINT BELAJAR:
         // Validasi input, cari subject, lalu update.
-        $validated = $this->validateSubject($request);
-        $subject = Subject::query()->findOrFail($id);
 
-        $subject->update($validated);
+        // TODO MAHASISWA:
+        // 1. Validasi input subject.
+        // 2. Cari subject berdasarkan id.
+        // 3. Update nama subject.
+        // 4. Redirect ke route subject.view.
 
-        return redirect()->route('subject.view', ['id' => $subject->id])->with('success', 'Subject updated successfully.');
+        abort(501, 'TODO: lengkapi SubjectController@patchData');
     }
 
     public function deleteData($id)
@@ -72,17 +92,23 @@ class SubjectController extends Controller
         // HINT BELAJAR:
         // Delete subject. Di project yang lebih besar, cek dulu apakah subject
         // masih punya score sebelum dihapus.
-        Subject::query()->findOrFail($id)->delete();
 
-        return redirect()->route('subject.list')->with('success', 'Subject deleted successfully.');
+        // TODO MAHASISWA:
+        // 1. Cari subject berdasarkan id.
+        // 2. Hapus subject.
+        // 3. Redirect ke route subject.list.
+
+        abort(501, 'TODO: lengkapi SubjectController@deleteData');
     }
 
     private function validateSubject(Request $request): array
     {
         // HINT BELAJAR:
         // Aturan ini dipakai create dan update agar konsisten.
-        return $request->validate([
-            'name' => ['required', 'string', 'min:2', 'max:255'],
-        ]);
+
+        // TODO MAHASISWA:
+        // Return hasil $request->validate() untuk field name.
+
+        abort(501, 'TODO: lengkapi SubjectController@validateSubject');
     }
 }

@@ -14,31 +14,38 @@ class StudentController extends Controller
     public function index()
     {
         // HINT BELAJAR:
-        // Ambil semua student dari database, lalu kirim ke view student-list.
-        $students = Student::query()->latest()->get();
+        // TODO MAHASISWA:
+        // 1. Buat variable $students.
+        // 2. Isi dengan semua data student dari database, urutkan dari terbaru.
+        // 3. Return view pages.student.student-list.
+        // 4. Kirim data dengan key 'students'.
 
-        return view('pages.student.student-list', [
-            'students' => $students,
-        ]);
+        abort(501, 'TODO: lengkapi StudentController@index');
     }
 
     public function createView()
     {
         // HINT BELAJAR:
         // Method ini hanya menampilkan form. Belum ada data yang disimpan.
-        return view('pages.student.student-create');
+
+        // TODO MAHASISWA:
+        // Return view pages.student.student-create.
+
+        abort(501, 'TODO: lengkapi StudentController@createView');
     }
 
     public function createData(Request $request)
     {
         // HINT BELAJAR:
         // Request berisi input dari form. Validasi dulu sebelum simpan ke database.
-        $validated = $this->validateStudent($request);
-        $validated['nis'] = $this->makeNis($validated['name']);
 
-        Student::query()->create($validated);
+        // TODO MAHASISWA:
+        // 1. Validasi input student.
+        // 2. Buat NIS otomatis dari nama.
+        // 3. Simpan data ke tabel students.
+        // 4. Redirect ke route student.list.
 
-        return redirect()->route('student.list')->with('success', 'Student created successfully.');
+        abort(501, 'TODO: lengkapi StudentController@createData');
     }
 
     public function deleteData($id)
@@ -46,9 +53,13 @@ class StudentController extends Controller
         // HINT BELAJAR:
         // findOrFail akan mencari data berdasarkan id. Jika tidak ada, Laravel
         // otomatis menampilkan halaman 404.
-        Student::query()->findOrFail($id)->delete();
 
-        return redirect()->route('student.list')->with('success', 'Student deleted successfully.');
+        // TODO MAHASISWA:
+        // 1. Cari student berdasarkan id.
+        // 2. Hapus data tersebut.
+        // 3. Redirect ke route student.list.
+
+        abort(501, 'TODO: lengkapi StudentController@deleteData');
     }
 
     public function getInitial($name): string
@@ -68,20 +79,26 @@ class StudentController extends Controller
     {
         // HINT BELAJAR:
         // Detail student dicari memakai nis, bukan id, karena route-nya menerima nis.
-        $student = Student::query()->where('nis', $nis)->firstOrFail();
 
-        return view('pages.student.student-detail', ['student' => $student]);
+        // TODO MAHASISWA:
+        // 1. Cari student berdasarkan nis.
+        // 2. Return view pages.student.student-detail.
+        // 3. Kirim data dengan key 'student'.
+
+        abort(501, 'TODO: lengkapi StudentController@detailView');
     }
 
     public function patchView($nis)
     {
         // HINT BELAJAR:
         // Ambil data lama, lalu tampilkan di form edit.
-        $student = Student::query()->where('nis', $nis)->firstOrFail();
 
-        return view('pages.student.student-patch', [
-            'student' => $student,
-        ]);
+        // TODO MAHASISWA:
+        // 1. Cari student berdasarkan nis.
+        // 2. Return view pages.student.student-patch.
+        // 3. Kirim data dengan key 'student'.
+
+        abort(501, 'TODO: lengkapi StudentController@patchView');
     }
 
     public function patchData(Request $request, $nis)
@@ -89,12 +106,14 @@ class StudentController extends Controller
         // HINT BELAJAR:
         // Update memakai data yang sudah divalidasi. Field nis tidak diubah
         // agar alamat detail student tetap stabil.
-        $validated = $this->validateStudent($request);
-        $student = Student::query()->where('nis', $nis)->firstOrFail();
 
-        $student->update($validated);
+        // TODO MAHASISWA:
+        // 1. Validasi input student.
+        // 2. Cari student berdasarkan nis.
+        // 3. Update name, gender, dan birthDate.
+        // 4. Redirect ke route student.view.
 
-        return redirect()->route('student.view', ['nis' => $student->nis])->with('success', 'Student updated successfully.');
+        abort(501, 'TODO: lengkapi StudentController@patchData');
     }
 
     private function validateStudent(Request $request): array
@@ -102,11 +121,12 @@ class StudentController extends Controller
         // HINT BELAJAR:
         // Semua aturan validasi Student dikumpulkan di satu tempat agar create
         // dan update memakai aturan yang sama.
-        return $request->validate([
-            'name' => ['required', 'string', 'min:5', 'max:255'],
-            'gender' => ['required', Rule::in(['male', 'female'])],
-            'birthDate' => ['required', 'date'],
-        ]);
+
+        // TODO MAHASISWA:
+        // Return hasil $request->validate().
+        // Field yang divalidasi: name, gender, birthDate.
+
+        abort(501, 'TODO: lengkapi StudentController@validateStudent');
     }
 
     private function makeNis(string $name): string
@@ -114,10 +134,12 @@ class StudentController extends Controller
         // HINT BELAJAR:
         // NIS dibuat otomatis dari inisial nama + angka random, lalu dicek
         // agar tidak sama dengan NIS yang sudah ada.
-        do {
-            $nis = $this->getInitial($name).random_int(100, 999);
-        } while (Student::query()->where('nis', $nis)->exists());
 
-        return $nis;
+        // TODO MAHASISWA:
+        // 1. Buat NIS dari getInitial($name) + angka random.
+        // 2. Cek agar NIS tidak sama dengan data yang sudah ada.
+        // 3. Return NIS tersebut.
+
+        abort(501, 'TODO: lengkapi StudentController@makeNis');
     }
 }

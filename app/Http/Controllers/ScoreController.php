@@ -17,16 +17,14 @@ class ScoreController extends Controller
         // HINT BELAJAR:
         // with('scores') dipakai agar Laravel mengambil data score student
         // sekaligus, sehingga view bisa menghitung progress seperti 6/7.
-        $students = Student::query()
-            ->with(['scores' => fn ($query) => $query->whereNotNull('score')])
-            ->latest()
-            ->get();
-        $totalSubjects = Subject::query()->count();
 
-        return view('pages.score.score-list', [
-            'students' => $students,
-            'totalSubjects' => $totalSubjects,
-        ]);
+        // TODO MAHASISWA:
+        // 1. Ambil semua student beserta scores yang sudah terisi.
+        // 2. Hitung total subject.
+        // 3. Return view pages.score.score-list.
+        // 4. Kirim data students dan totalSubjects.
+
+        abort(501, 'TODO: lengkapi ScoreController@index');
     }
 
     public function inputView($studentId)
@@ -34,47 +32,34 @@ class ScoreController extends Controller
         // HINT BELAJAR:
         // Halaman input nilai butuh 3 data: student yang dipilih, semua subject,
         // dan score lama milik student tersebut.
-        $student = Student::query()->findOrFail($studentId);
-        $subjects = Subject::query()->orderBy('name')->get();
-        $scores = Score::query()
-            ->where('student_id', $student->id)
-            ->pluck('score', 'subject_id');
 
-        return view('pages.score.score-input', [
-            'student' => $student,
-            'subjects' => $subjects,
-            'scores' => $scores,
-        ]);
+        // TODO MAHASISWA:
+        // 1. Cari student berdasarkan studentId.
+        // 2. Ambil semua subject.
+        // 3. Ambil score lama milik student, gunakan subject_id sebagai key.
+        // 4. Return view pages.score.score-input.
+
+        abort(501, 'TODO: lengkapi ScoreController@inputView');
     }
 
     public function updateData(Request $request, $studentId, $subjectId)
     {
         // HINT BELAJAR:
         // Pastikan student dan subject benar-benar ada sebelum score disimpan.
-        Student::query()->findOrFail($studentId);
-        Subject::query()->findOrFail($subjectId);
 
         // HINT BELAJAR:
         // Score dibatasi 0 sampai 100 agar data yang masuk tetap masuk akal.
-        $validated = $request->validate([
-            'score' => ['required', 'integer', 'min:0', 'max:100'],
-        ]);
 
         // HINT BELAJAR:
         // updateOrCreate membuat data jika belum ada, atau update jika pasangan
         // student_id dan subject_id sudah pernah disimpan.
-        Score::query()->updateOrCreate(
-            [
-                'student_id' => $studentId,
-                'subject_id' => $subjectId,
-            ],
-            [
-                'score' => $validated['score'],
-            ],
-        );
 
-        return redirect()
-            ->route('score.input.view', ['studentId' => $studentId])
-            ->with('success', 'Score updated successfully.');
+        // TODO MAHASISWA:
+        // 1. Pastikan student dan subject ada.
+        // 2. Validasi score angka 0 sampai 100.
+        // 3. Simpan dengan updateOrCreate.
+        // 4. Redirect kembali ke route score.input.view.
+
+        abort(501, 'TODO: lengkapi ScoreController@updateData');
     }
 }
