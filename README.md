@@ -208,21 +208,40 @@ composer install
 npm install
 ```
 
-### 4. Buat file `.env`
+### 4. Copy `.env.example` menjadi `.env`
+
+Laravel membaca konfigurasi dari file `.env`.
+
+File `.env.example` adalah contoh konfigurasi. File ini aman masuk GitHub.
+File `.env` adalah konfigurasi asli di laptop masing-masing. File ini tidak boleh masuk GitHub karena bisa berisi password database.
+
+Saat pertama kali clone project, biasanya `.env` belum ada. Jadi kita harus copy dulu.
+
+Untuk macOS atau Linux:
 
 ```bash
 cp .env.example .env
 ```
 
-Di Windows Command Prompt:
+Untuk Windows Command Prompt:
 
 ```bat
 copy .env.example .env
 ```
 
+Untuk Windows PowerShell:
+
+```powershell
+Copy-Item .env.example .env
+```
+
+Setelah dicopy, pastikan file `.env` sudah muncul di folder project.
+
 ### 5. Atur database di `.env`
 
-Contoh memakai MySQL:
+Buka file `.env`, lalu cari bagian database.
+
+Contoh konfigurasi memakai MySQL:
 
 ```env
 DB_CONNECTION=mysql
@@ -233,13 +252,83 @@ DB_USERNAME=root
 DB_PASSWORD=
 ```
 
+Penjelasan singkat:
+
+- `DB_CONNECTION=mysql` berarti project memakai database MySQL.
+- `DB_HOST=127.0.0.1` berarti database ada di komputer sendiri.
+- `DB_PORT=3306` adalah port default MySQL.
+- `DB_DATABASE=learning` adalah nama database yang harus dibuat di MySQL.
+- `DB_USERNAME=root` adalah username MySQL.
+- `DB_PASSWORD=` dikosongkan jika MySQL tidak memakai password.
+
 Jika password MySQL kamu ada, isi `DB_PASSWORD`.
 
+Contoh:
+
+```env
+DB_PASSWORD=password_kamu
+```
+
+Jika kamu belum membuat database, buka MySQL lalu jalankan:
+
+```sql
+CREATE DATABASE learning;
+```
+
+Jika ingin memakai nama database lain, boleh. Tetapi nama di MySQL dan `.env` harus sama.
+
+Contoh:
+
+```sql
+CREATE DATABASE manajemen_nilai;
+```
+
+Maka `.env` harus menjadi:
+
+```env
+DB_DATABASE=manajemen_nilai
+```
+
+Alternatif untuk belajar cepat: pakai SQLite.
+
+SQLite lebih sederhana karena tidak perlu membuat database MySQL. Tetapi untuk kelas yang ingin belajar MySQL, tetap gunakan MySQL.
+
+Jika ingin memakai SQLite:
+
+```env
+DB_CONNECTION=sqlite
+DB_DATABASE=database/database.sqlite
+```
+
+Lalu buat file database SQLite jika belum ada:
+
+```bash
+touch database/database.sqlite
+```
+
+Di Windows PowerShell:
+
+```powershell
+New-Item database/database.sqlite
+```
+
+Setelah mengubah `.env`, jalankan:
+
+```bash
+php artisan config:clear
+```
+
+Command ini memastikan Laravel membaca konfigurasi terbaru.
+
 ### 6. Buat application key
+
+Application key adalah kunci rahasia Laravel untuk keamanan aplikasi, misalnya session dan enkripsi.
 
 ```bash
 php artisan key:generate
 ```
+
+Setelah command ini berhasil, `.env` akan memiliki nilai `APP_KEY`.
 
 ### 7. Jalankan migration dan seeder
 
@@ -404,6 +493,21 @@ Menu yang dipakai:
 Tempat konfigurasi rahasia/lokal, seperti nama database dan password.
 
 Jangan commit `.env` ke GitHub.
+
+Yang biasanya diedit mahasiswa:
+
+- `APP_NAME`: nama aplikasi.
+- `APP_URL`: alamat aplikasi lokal, biasanya `http://127.0.0.1:8000`.
+- `DB_CONNECTION`: jenis database, misalnya `mysql`.
+- `DB_DATABASE`: nama database.
+- `DB_USERNAME`: username database.
+- `DB_PASSWORD`: password database.
+
+Jika `.env` berubah tetapi aplikasi masih membaca konfigurasi lama, jalankan:
+
+```bash
+php artisan config:clear
+```
 
 ### `composer.json`
 
@@ -898,10 +1002,12 @@ Gunakan checklist ini supaya tidak tersesat.
 
 Cek:
 
+- File `.env` sudah dibuat dari `.env.example`?
 - MySQL sudah hidup?
 - Nama database di `.env` benar?
 - Username/password benar?
 - Sudah buat database?
+- Sudah jalankan `php artisan config:clear` setelah mengubah `.env`?
 
 ### Error: route tidak ditemukan
 
