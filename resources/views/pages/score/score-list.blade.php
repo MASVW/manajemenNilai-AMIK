@@ -1,3 +1,7 @@
+{{-- HINT BELAJAR:
+    File ini menerima $students dan $totalSubjects dari ScoreController@index.
+    Kolom keterangan menghitung berapa subject yang sudah punya score.
+--}}
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
@@ -29,6 +33,10 @@
                                 <td class="py-4 text-center">{{ $loop->iteration }}</td>
                                 <td class="py-4">{{ $student->name }}</td>
                                 <td class="py-4 text-center">
+                                    {{-- HINT BELAJAR:
+                                        unique('subject_id')->count() mencegah subject yang sama
+                                        dihitung dua kali jika ada data score duplikat.
+                                    --}}
                                     {{ $student->scores->unique('subject_id')->count() }}/{{ $totalSubjects }}
                                 </td>
                                 <td class="py-4 flex justify-center items-center h-full">

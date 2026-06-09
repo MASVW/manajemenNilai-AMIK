@@ -12,6 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('subjects', function (Blueprint $table) {
+            // HINT BELAJAR:
+            // Subject dibuat sederhana agar mahasiswa bisa fokus memahami
+            // pola CRUD tanpa terlalu banyak field.
             $table->id();
             $table->string('name');
             $table->timestamps();

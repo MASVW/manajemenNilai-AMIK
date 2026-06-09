@@ -12,6 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('scores', function (Blueprint $table) {
+            // HINT BELAJAR:
+            // Tabel scores menghubungkan students dan subjects.
+            // student_id menunjuk ke students.id, subject_id menunjuk ke subjects.id.
             $table->id();
             $table->string('score')->nullable(true);
             $table->unsignedBigInteger('student_id');

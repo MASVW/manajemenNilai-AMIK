@@ -1,3 +1,7 @@
+{{-- HINT BELAJAR:
+    File ini menerima variable $students dari StudentController@index.
+    Tugas view list adalah melakukan loop data dan menampilkan tombol action.
+--}}
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
@@ -32,6 +36,10 @@
                         </tr>
                     </x-slot>
                     <x-slot name="tableBody">
+                        {{-- HINT BELAJAR:
+                            @foreach dipakai untuk menampilkan satu baris tabel
+                            untuk setiap student yang ada di database.
+                        --}}
                         @foreach ($students as $key => $student)
                             <tr class="capitalize {{ $key % 2 == 0 ? 'bg-gray-500' : '' }}">
                                 <td class="py-4">{{ $student?->name ?? 'Belum ada nama' }}</td>

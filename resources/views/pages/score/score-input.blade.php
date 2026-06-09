@@ -1,3 +1,7 @@
+{{-- HINT BELAJAR:
+    File ini menampilkan semua subject untuk satu student.
+    Setiap baris punya form kecil untuk update nilai subject tersebut.
+--}}
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
@@ -40,6 +44,10 @@
                             <tr class="capitalize {{ $loop->odd ? 'bg-gray-500' : '' }}">
                                 <td class="py-4">{{ $subject->name }}</td>
                                 <td class="py-4 text-center">
+                                    {{-- HINT BELAJAR:
+                                        Form dibuat per subject supaya tombol UPDATE hanya mengubah
+                                        satu nilai, bukan semua nilai sekaligus.
+                                    --}}
                                     <form id="score-form-{{ $subject->id }}" method="POST"
                                         action="{{ route('score.update.data', ['studentId' => $student->id, 'subjectId' => $subject->id]) }}">
                                         @csrf

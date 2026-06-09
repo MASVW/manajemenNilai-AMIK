@@ -1,3 +1,7 @@
+{{-- HINT BELAJAR:
+    Form tambah subject hanya punya satu input, yaitu name.
+    Ini contoh CRUD paling sederhana di project.
+--}}
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">

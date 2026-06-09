@@ -1,3 +1,7 @@
+{{-- HINT BELAJAR:
+    File detail menampilkan data student dalam mode disabled.
+    User bisa lanjut ke edit atau delete lewat tombol di atas.
+--}}
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">

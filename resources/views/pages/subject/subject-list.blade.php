@@ -1,3 +1,7 @@
+{{-- HINT BELAJAR:
+    File ini menerima variable $subjects dari SubjectController@index.
+    Polanya mirip student-list, hanya kolomnya lebih sedikit.
+--}}
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
@@ -29,6 +33,9 @@
                         </tr>
                     </x-slot>
                     <x-slot name="tableBody">
+                        {{-- HINT BELAJAR:
+                            $loop->odd adalah helper Blade untuk mengecek nomor loop ganjil.
+                        --}}
                         @foreach ($subjects as $key => $subject)
                             <tr class="capitalize {{ $key % 2 == 0 ? 'bg-gray-500' : '' }}">
                                 <td class="py-4 text-center">{{ $subject?->name ?? 'Belum ada nama' }}</td>

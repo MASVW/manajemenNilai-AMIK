@@ -1,3 +1,7 @@
+{{-- HINT BELAJAR:
+    File ini adalah form tambah student. Form mengirim data ke
+    route student.create.data, lalu diproses oleh StudentController@createData.
+--}}
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
@@ -15,6 +19,10 @@
                 </div>
 
                 <form class="space-y-5 px-5" action="{{ route('student.create.data') }}" method="POST">
+                    {{-- HINT BELAJAR:
+                        @csrf wajib untuk form POST di Laravel.
+                        Tanpa ini, request biasanya ditolak dengan status 419.
+                    --}}
                     @csrf
                     <div class="w-full grid grid-cols-3 gap-x-5">
                         <!-- Name -->

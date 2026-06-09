@@ -12,6 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('students', function (Blueprint $table) {
+            // HINT BELAJAR:
+            // Migration juga bisa dipakai untuk mengubah tabel yang sudah ada.
+            // Di sini kita menambahkan kolom gender ke tabel students.
             $table->enum('gender', ['male', 'female']);
         });
     }

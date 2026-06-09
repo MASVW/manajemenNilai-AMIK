@@ -12,6 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('students', function (Blueprint $table) {
+            // HINT BELAJAR:
+            // Migration adalah rancangan tabel. Kolom yang ditulis di sini
+            // akan dibuat di database saat menjalankan php artisan migrate.
             $table->id();
             $table->string('name')->nullable(false);
             $table->string('nis')->nullable(false)->unique('nis');

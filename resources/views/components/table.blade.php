@@ -1,3 +1,7 @@
+{{-- HINT BELAJAR:
+    Component table dipakai ulang oleh halaman student, subject, dan score.
+    Slot tableHead berisi <thead>, slot tableBody berisi <tbody>.
+--}}
 <div class="dark:text-white border-white rounded-md border mx-4 my-4 px-4 py-4">
     <table class="w-full">
         <thead>

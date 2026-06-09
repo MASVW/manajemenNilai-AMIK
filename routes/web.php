@@ -6,6 +6,10 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SubjectController;
 use Illuminate\Support\Facades\Route;
 
+// HINT BELAJAR:
+// Route adalah daftar alamat URL aplikasi. Baca file ini dari atas ke bawah
+// untuk mengetahui URL mana yang menjalankan controller dan method tertentu.
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -20,6 +24,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+// HINT BELAJAR:
+// CRUD Student. Prefix "student" berarti semua URL di group ini diawali /student.
+// Contoh: Route::get('/', 'index') menjadi GET /student.
 Route::prefix('student')->controller(StudentController::class)->middleware('auth')->group(function () {
     Route::get('/', 'index')->name('student.list');
     Route::get('/create', 'createView')->name('student.create.view');
@@ -30,6 +37,8 @@ Route::prefix('student')->controller(StudentController::class)->middleware('auth
     Route::post('/{id}', 'deleteData')->name('student.delete');
 });
 
+// HINT BELAJAR:
+// CRUD Subject memakai pola yang sama seperti Student, tetapi field-nya hanya name.
 Route::prefix('subjects')->controller(SubjectController::class)->middleware('auth')->group(function () {
     Route::get('/', 'index')->name('subject.list');
     Route::get('/create', 'createView')->name('subject.create.view');
@@ -40,6 +49,9 @@ Route::prefix('subjects')->controller(SubjectController::class)->middleware('aut
     Route::post('/{id}', 'deleteData')->name('subject.delete');
 });
 
+// HINT BELAJAR:
+// Score tidak dibuat sebagai CRUD penuh. User hanya melihat daftar student,
+// membuka detail input nilai, lalu meng-update score per subject.
 Route::prefix('scores')->controller(ScoreController::class)->middleware('auth')->group(function () {
     Route::get('/', 'index')->name('score.list');
     Route::get('/{studentId}', 'inputView')->name('score.input.view');
