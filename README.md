@@ -70,6 +70,36 @@ Kalau ingin melihat output final tanpa komentar belajar tambahan, gunakan:
 git switch master
 ```
 
+### Cara Push Branch Dengan Aman
+
+Jangan jalankan `git branch -M master` jika kamu sedang berada di branch `learning`.
+
+Perintah `git branch -M master` artinya mengganti nama branch yang sedang aktif menjadi `master`. Jadi jika branch aktif adalah `learning`, branch `learning` bisa berubah nama menjadi `master`.
+
+Cara aman mengecek branch aktif:
+
+```bash
+git branch
+```
+
+Branch aktif ditandai dengan `*`.
+
+Cara push branch final:
+
+```bash
+git switch master
+git push -u origin master
+```
+
+Cara push branch belajar:
+
+```bash
+git switch learning
+git push -u origin learning
+```
+
+Jika sudah terlanjur salah push branch belajar ke `origin/master`, jangan langsung force push jika belum yakin. Diskusikan dulu dengan pengajar, karena force push bisa mengubah riwayat branch di GitHub.
+
 ## Persiapan Alat
 
 Bagian ini menjelaskan alat yang perlu diinstall. Tidak perlu takut dengan banyak nama. Setiap alat punya tugas masing-masing.
